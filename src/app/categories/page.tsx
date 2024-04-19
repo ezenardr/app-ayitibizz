@@ -1,4 +1,5 @@
 import GlobalLayout from '@/components/Core/GlobalLayout';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 
 export default function Categories() {
@@ -36,9 +37,12 @@ export default function Categories() {
                 Dignissimos sequi dicta impedit aperiam ipsum!
               </p>
 
-              <span className="mt-3 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+              <Link
+                href={'/category'}
+                className="mt-3 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+              >
                 Shop Now
-              </span>
+              </Link>
             </div>
           </div>
         ))}

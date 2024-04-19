@@ -6,7 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import { ChevronsRight, ShoppingCart } from 'lucide-react';
+import { ChevronsRight, MoveRight, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import { Link } from 'next-view-transitions';
 
@@ -92,6 +92,24 @@ function Categories() {
         'https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80',
       path: '/',
     },
+    {
+      name: 'Top',
+      image:
+        'https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80',
+      path: '/',
+    },
+    {
+      name: 'Top',
+      image:
+        'https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80',
+      path: '/',
+    },
+    {
+      name: 'Top',
+      image:
+        'https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80',
+      path: '/',
+    },
   ];
   return (
     <div>
@@ -108,27 +126,35 @@ function Categories() {
       <Carousel className="w-full  overflow-hidden ">
         <CarouselContent>
           {categories.map(({ image, name, path }, i) => (
-            <CarouselItem className="basis-1/3 lg:basis-1/5" key={i}>
-              <div className="p-1 aspect-square overflow-hidden">
-                <div className="group relative block bg-black aspect-square">
+            <CarouselItem className="basis-1/4 lg:basis-1/12" key={i}>
+              <div className="p-1 aspect-square overflow-hidden ">
+                <div className="group relative block aspect-square ">
                   <Image
                     alt=""
                     src="https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-                    className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50 "
+                    className="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity group-hover:opacity-75 rounded-full "
                     width={1200}
                     height={60}
                   />
 
                   <div className="relative  sm:p-6 lg:p-8 flex flex-col justify-center items-center h-full">
                     <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="inline-block bg-primary-100 px-2 py-3 text-xs font-medium uppercase tracking-wide text-white">
-                        Shop Now
-                      </span>
+                      <Link
+                        href={'/category'}
+                        className="inline-block bg-primary-100 p-3 text-xs font-medium uppercase tracking-wide text-white rounded-full"
+                      >
+                        <MoveRight />
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-              <span>{name}</span>
+              <Link
+                href={'/category'}
+                className=" font-semibold flex justify-center"
+              >
+                {name}
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

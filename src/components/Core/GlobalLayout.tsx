@@ -39,6 +39,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Logo from '@/img/logos/logo-simple.png';
 import Logo2 from '@/img/logos/logo-texte-ayitibizz.png';
+import Cart from './Cart';
 // import { signOut } from 'next-auth/react';
 
 const links = [
@@ -59,7 +60,8 @@ export default function GlobalLayout({
     return pathname === path;
   }
   return (
-    <div className="flex min-h-screen w-full flex-col bg-muted/40">
+    // bg-muted/40
+    <div className="flex min-h-screen w-full flex-col bg-white no-scrollbar">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex ">
         <nav className="flex flex-col items-center gap-4 px-2 py-4">
           <Link
@@ -147,7 +149,7 @@ export default function GlobalLayout({
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/">Dashboard</Link>
+                  <Link href="/">Acceuil</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               {subpage && (
@@ -171,27 +173,38 @@ export default function GlobalLayout({
               className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px] hidden md:block "
             />
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              {/* <DropdownMenuItem onClick={() => signOut()}>
+          <div className="flex items-center gap-6">
+            <Cart>
+              <ShoppingCart className="text-gray-600 cursor-pointer hover:text-gray-900" />
+            </Cart>
+            <Link href={'/search'}>
+              <Search className="md:hidden text-gray-600 hover:text-gray-900" />
+            </Link>
+          </div>
+
+          <div className="hidden md:block">
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Support</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                {/* <DropdownMenuItem onClick={() => signOut()}>
                 Logout
               </DropdownMenuItem> */}
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </header>
         <div className="p-4 sm:px-6 sm:py-0">{children}</div>
       </div>
